@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+@import './recipe-list';
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  font-weight: 600;
+  transition: background-color 200ms ease-out;
+  &:hover {
+    cursor: pointer;
+  }
+  &--primary {
+    background-color: rgb(228, 153, 13);
+    color: black;
+    &:hover {
+      background-color: darken($color: rgb(228, 153, 13), $amount: 4%);
+    }
+  }
+  &--secondary {
+    background-color: rgb(31, 29, 29);
+    color: rgb(228, 153, 13);
+    &:hover {
+      background-color: lighten($color:  rgb(31, 29, 29), $amount: 10%);
+    }
+  }
+}
