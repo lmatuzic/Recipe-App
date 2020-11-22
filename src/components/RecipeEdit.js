@@ -43,7 +43,7 @@ export default function RecipeEdit({ recipe }) {
 
         <div className="btn__container">
           <button
-            onClick={ () => selectRecipe(undefined) }
+            onClick = { () => selectRecipe(undefined) }
           >
             &times;
           </button>
@@ -57,8 +57,8 @@ export default function RecipeEdit({ recipe }) {
             type="text" 
             name="name" 
             id="name" 
-            value={ recipe.name } 
-            onChange={ event => change({ name: event.target.value })} />
+            value = { recipe.name } 
+            onChange = { event => change({ name: event.target.value }) } />
         </div>
 
         <div className="recipe-item">
@@ -67,8 +67,8 @@ export default function RecipeEdit({ recipe }) {
             type="text" 
             name="cookTime" 
             id="cookTime" 
-            value={ recipe.cookTime } 
-            onChange={ event => change({ cookTime: event.target.value })} />        
+            value = { recipe.cookTime } 
+            onChange = { event => change({ cookTime: event.target.value })} />        
         </div>
 
         <div className="recipe-item">
@@ -78,8 +78,8 @@ export default function RecipeEdit({ recipe }) {
             min="1" 
             name="servings" 
             id="servings" 
-            value={recipe.servings} 
-            onChange={ event => change({ servings: parseInt(event.target.value) || '' })} />        
+            value = { recipe.servings } 
+            onChange = { event => change({ servings: parseInt(event.target.value) || '' }) } />        
         </div>
 
         <div className="recipe-item">
@@ -87,13 +87,13 @@ export default function RecipeEdit({ recipe }) {
           <textarea 
             name="instructions" 
             id="instructions" 
-            value={ recipe.instructions } 
-            onChange={ event => change({ instructions: event.target.value })} />
+            value = { recipe.instructions } 
+            onChange = { event => change({ instructions: event.target.value })} />
         </div>
       </div>
 
 
-      <label>Ingredients</label>
+      <label>Ingredients:</label>
       <div className="recipe-ingredients__container">
         {recipe.ingredients.map(ingredient => (
           <RecipeIngredientEdit 
@@ -106,7 +106,7 @@ export default function RecipeEdit({ recipe }) {
 
         <button 
           className="btn btn--primary"
-          onClick={ () => addIngredient() }
+          onClick = { () => addIngredient() }
         >
           Add ingredient
         </button>

@@ -14,7 +14,7 @@ export default function RecipeIngredientEdit(props) {
           <label>Name</label>
           <input 
             type="text" 
-            value={ingredient.name} 
+            value ={ ingredient.name } 
             onChange={ event => change({ name: event.target.value })}
           />
         </div>
@@ -23,8 +23,8 @@ export default function RecipeIngredientEdit(props) {
           <label>Amount</label>
           <input 
             type="text" 
-            value={ingredient.amount} 
-            onChange={ event => change({ amount: event.target.value })}  
+            value = { ingredient.amount } 
+            onChange = { event => change({ amount: event.target.value })}  
           />
         </div>
 

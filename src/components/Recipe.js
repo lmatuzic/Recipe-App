@@ -27,7 +27,7 @@ export default function Recipe(props) {
 
       <div className="recipe__item">
         <strong>Ingredients:</strong>
-        <div><IngredientList ingredients={ ingredients } /></div>
+        <IngredientList ingredients={ ingredients } />
       </div>
 
       <div className="recipe__cta">

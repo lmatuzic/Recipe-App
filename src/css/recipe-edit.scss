@@ -66,10 +66,15 @@
     flex-direction: column;
     justify-content: flex-end;
 
+    .btn {
+      margin-top: 2em;
+      width: fit-content;
+    }
+
     .recipe-ingredient {
       display: flex;
       align-items: center;
-      margin-top: 0.5em;
+      margin: 0.5em 0;
 
       div {
         display: flex;
@@ -86,11 +91,5 @@
         margin-top: 0;
       }
     }
-    
-    input {
-      width: 100%;
-      margin-right: 1em;
-    }
   }
-  
 }

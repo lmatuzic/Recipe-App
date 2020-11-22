@@ -21,7 +21,7 @@ export default function RecipeList(props) {
         <div className="btn__container">
           <button
             className="btn btn--primary"
-            onClick={addRecipe}
+            onClick = { addRecipe }
            >
             Add Recipe
           </button>
