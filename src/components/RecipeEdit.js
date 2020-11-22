@@ -13,17 +13,25 @@ export default function RecipeEdit() {
       </header>
 
       <div className="recipe-item__container">
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" />
+        <div className="recipe-item">
+          <label htmlFor="name">Name</label>
+          <input type="text" name="name" id="name" />
+        </div>
 
-        <label htmlFor="cookTime">Cook time</label>
-        <input type="text" name="cookTime" id="cookTime" />
+        <div className="recipe-item">
+          <label htmlFor="cookTime">Cook time</label>
+          <input type="text" name="cookTime" id="cookTime" />        
+        </div>
 
-        <label htmlFor="servings">Servings</label>
-        <input type="number" min="1" name="servings" id="servings" />
+        <div className="recipe-item">
+          <label htmlFor="servings">Servings</label>
+          <input type="number" min="1" name="servings" id="servings" />        
+        </div>
 
-        <label htmlFor="instructions">Instructions</label>
-        <textarea name="instructions" id="instructions" />
+        <div className="recipe-item">
+          <label htmlFor="instructions">Instructions</label>
+          <textarea name="instructions" id="instructions" />
+        </div>
       </div>
 
 
