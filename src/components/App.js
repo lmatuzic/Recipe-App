@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import RecipeList from './RecipeList'
+import RecipeEdit from './RecipeEdit'
 import { v4 as uuidv4 } from 'uuid';
 import '../css/main.scss'
 
@@ -18,10 +19,10 @@ function App() {
     if (recipeJSON !== null) {
       setRecipes(JSON.parse(recipeJSON));
     }
-  }, []) // call only 1 time - on load
+  }, []) // call only 1 time - on load (load recipes from localStorage)
 
   useEffect(() => {
-    localStorage.setItem( LOCAL_STORAGE_KEY, JSON.stringify(recipes))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes]); // call every time recipe change
 
   function addRecipe() {
@@ -52,6 +53,7 @@ function App() {
       <RecipeList 
         recipes={recipes} 
       />
+      <RecipeEdit />
     </RecipeContext.Provider>
   );
 }
