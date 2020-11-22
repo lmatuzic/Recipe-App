@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Recipe from './Recipe'
+import { RecipeContext } from './App'
 
 export default function RecipeList(props) {
-  const { recipes, addRecipe, deleteRecipe } = props;
+  const { recipes } = props;
+  const { addRecipe } = useContext(RecipeContext);
 
   return (
     <>
@@ -12,11 +14,9 @@ export default function RecipeList(props) {
             <Recipe 
               key={recipe.id} 
               {...recipe}
-              deleteRecipe={deleteRecipe}
             />
           ) 
         })}
-
 
         <div className="btn__container">
           <button
