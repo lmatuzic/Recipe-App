@@ -4,6 +4,9 @@
   right: 0;
   width: 50%;
   padding: 2rem;
+  border: 1px solid #bdb6b6;
+  border-radius: 2px;
+  margin: 2rem 1rem;
 }
 
 .recipe-edit header {

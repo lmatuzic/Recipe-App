@@ -1,12 +1,24 @@
 import React, { useContext } from 'react'
 import { RecipeContext } from './App'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function RecipeEdit({ recipe }) {
-  const { changeRecipe } = useContext(RecipeContext);
+  const { changeRecipe, selectRecipe } = useContext(RecipeContext);
 
   function change(changes) { // get all changes (differences) when modifying recipes
     changeRecipe(recipe.id, { ...recipe, ...changes });
+  }
+
+  function addIngredient() {
+    const newIngredient = {
+      id: uuidv4(),
+      name: '',
+      amount: ''
+    }
+
+    change({ ingredients: [...recipe.ingredients, newIngredient] })
   }
 
   function changeIngredient(id, ingredient) {
@@ -16,13 +28,25 @@ export default function RecipeEdit({ recipe }) {
     change({ ingredients: newIngredients });
   }
 
+  function deleteIngredient(id) {
+    change({
+      ingredients: recipe.ingredients.filter(
+        ingredient => ingredient.id !== id
+      )
+    })
+  }
+
   return (
     <div className="recipe-edit">
       <header>
         <h3>Edit</h3>
 
         <div className="btn__container">
-          <button>&times;</button>
+          <button
+            onClick={ () => selectRecipe(undefined) }
+          >
+            &times;
+          </button>
         </div>
       </header>
 
@@ -34,7 +58,7 @@ export default function RecipeEdit({ recipe }) {
             name="name" 
             id="name" 
             value={ recipe.name } 
-            onInput={ event => change({ name: event.target.value })} />
+            onChange={ event => change({ name: event.target.value })} />
         </div>
 
         <div className="recipe-item">
@@ -44,7 +68,7 @@ export default function RecipeEdit({ recipe }) {
             name="cookTime" 
             id="cookTime" 
             value={ recipe.cookTime } 
-            onInput={ event => change({ cookTime: event.target.value })} />        
+            onChange={ event => change({ cookTime: event.target.value })} />        
         </div>
 
         <div className="recipe-item">
@@ -55,7 +79,7 @@ export default function RecipeEdit({ recipe }) {
             name="servings" 
             id="servings" 
             value={recipe.servings} 
-            onInput={ event => change({ servings: parseInt(event.target.value) || '' })} />        
+            onChange={ event => change({ servings: parseInt(event.target.value) || '' })} />        
         </div>
 
         <div className="recipe-item">
@@ -64,7 +88,7 @@ export default function RecipeEdit({ recipe }) {
             name="instructions" 
             id="instructions" 
             value={ recipe.instructions } 
-            onInput={ event => change({ instructions: event.target.value })} />
+            onChange={ event => change({ instructions: event.target.value })} />
         </div>
       </div>
 
@@ -73,11 +97,19 @@ export default function RecipeEdit({ recipe }) {
       <div className="recipe-ingredients__container">
         {recipe.ingredients.map(ingredient => (
           <RecipeIngredientEdit 
-          key={ ingredient.id }
-          ingredient={ ingredient }
-          changeIngredient={ changeIngredient }
+          key = { ingredient.id }
+          changeIngredient = { changeIngredient }
+          deleteIngredient = { deleteIngredient }
+          ingredient = { ingredient }
         />
         ))}
+
+        <button 
+          className="btn btn--primary"
+          onClick={ () => addIngredient() }
+        >
+          Add ingredient
+        </button>
       </div>
     </div>
   )

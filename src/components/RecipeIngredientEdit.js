@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function RecipeIngredientEdit(props) {
-  const { ingredient, changeIngredient } = props;
+  const { ingredient, changeIngredient, deleteIngredient } = props;
 
   function change(changes) { 
     changeIngredient(ingredient.id, { ...ingredient, ...changes });
@@ -15,7 +15,7 @@ export default function RecipeIngredientEdit(props) {
           <input 
             type="text" 
             value={ingredient.name} 
-            onInput={ event => change({ name: event.target.value })}
+            onChange={ event => change({ name: event.target.value })}
           />
         </div>
 
@@ -24,13 +24,17 @@ export default function RecipeIngredientEdit(props) {
           <input 
             type="text" 
             value={ingredient.amount} 
-            onInput={ event => change({ name: event.target.value })}  
+            onChange={ event => change({ amount: event.target.value })}  
           />
         </div>
 
         <div>
           <span>&nbsp;</span>
-          <button>&times;</button>
+          <button
+            onClick = { () => deleteIngredient(ingredient.id) }
+          >
+            &times;
+          </button>
         </div>
       </div>
     </>
