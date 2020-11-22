@@ -9,10 +9,8 @@ const LOCAL_STORAGE_KEY = 'RecipeApp.recipes';
 
 function App() {
   const [recipes, setRecipes] = useState(sampleRecipes);
-  const recipeContextValue = {
-    addRecipe: addRecipe,
-    deleteRecipe: deleteRecipe
-  };
+  const [selectedRecipeId, setSelectedRecipeId] = useState();
+  const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId);
 
   useEffect(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -24,6 +22,16 @@ function App() {
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes]); // call every time recipe change
+
+  const recipeContextValue = {
+    addRecipe: addRecipe,
+    deleteRecipe: deleteRecipe,
+    selectRecipe: selectRecipe
+  };
+
+  function selectRecipe(id) {
+    setSelectedRecipeId(id);
+  }
 
   function addRecipe() {
     const newRecipe = {
@@ -53,11 +61,10 @@ function App() {
       <RecipeList 
         recipes={recipes} 
       />
-      <RecipeEdit />
+      { selectedRecipe && <RecipeEdit recipe={selectedRecipe} /> /* hide edit when recipe is not yet selected */ } 
     </RecipeContext.Provider>
   );
 }
-
 
 const sampleRecipes = [
   {

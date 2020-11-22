@@ -105,6 +105,22 @@
   margin-top: 0.5em;
 }
 
+.recipe-edit .recipe-ingredients__container .recipe-ingredient div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 0.5em;
+  width: 100%;
+}
+
+.recipe-edit .recipe-ingredients__container .recipe-ingredient div:nth-child(3) {
+  width: auto;
+}
+
 .recipe-edit .recipe-ingredients__container .recipe-ingredient input {
   margin-bottom: 0;
   margin-top: 0;

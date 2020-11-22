@@ -4,7 +4,7 @@ import { RecipeContext } from './App'
 
 export default function Recipe(props) {
   const { id, name, cookTime, servings, instructions, ingredients } = props;
-  const { deleteRecipe } = useContext(RecipeContext);
+  const { deleteRecipe, selectRecipe } = useContext(RecipeContext);
   
   return (
     <div className="recipe">
@@ -31,7 +31,7 @@ export default function Recipe(props) {
       </div>
 
       <div className="recipe__cta">
-        <button className="btn btn--primary">Edit</button>
+        <button onClick={() => selectRecipe(id)} className="btn btn--primary">Edit</button>
         <button onClick={() => deleteRecipe(id)} className="btn btn--secondary">Delete</button>
       </div>
     </div>
